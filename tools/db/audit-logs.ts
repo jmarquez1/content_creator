@@ -14,10 +14,14 @@ export interface CreateAuditLogInput {
     task_template?: { id: string; version: number; content: string };
     voice_profile?: { id: string; version: number; content: object };
     platform_profile?: { id: string; version: number; content: object };
-    user_input: object;
+    user_input?: object;
     trend_summary?: string | null;
     composed_prompt: string;
     idea?: { id: string; title: string; hook: string | null; outline: unknown };
+    // Variant generation fields
+    original_post?: { id: string; content: string; platform: string };
+    variation_type?: string;
+    variation_instruction?: string;
   };
   modelUsed: string;
   inputTokens?: number;
