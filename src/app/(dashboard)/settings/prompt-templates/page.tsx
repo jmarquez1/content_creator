@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ArrowLeft, Plus, Pencil } from 'lucide-react';
 import Link from 'next/link';
-import { Header } from '@/components/layout/header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -55,24 +54,24 @@ export default function PromptTemplatesPage() {
 
   return (
     <div className="flex h-full flex-col">
-      <Header
-        title="Prompt Templates"
-        subtitle="Customize AI prompts for different tasks"
-        actions={
-          <div className="flex items-center gap-2">
-            <Link href="/settings">
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back
-              </Button>
-            </Link>
-            <Button>
-              <Plus className="mr-2 h-4 w-4" />
-              New Template
+      <div className="flex h-20 items-center justify-between bg-white/50 backdrop-blur-sm border-b border-[var(--color-border)] px-6">
+        <div>
+          <h1 className="text-2xl font-bold text-[var(--color-foreground)]">Prompt Templates</h1>
+          <p className="text-sm text-[var(--color-muted-foreground)]">Customize AI prompts for different tasks</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Link href="/settings">
+            <Button variant="ghost" size="sm">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back
             </Button>
-          </div>
-        }
-      />
+          </Link>
+          <Button>
+            <Plus className="mr-2 h-4 w-4" />
+            New Template
+          </Button>
+        </div>
+      </div>
 
       <div className="flex-1 overflow-auto p-6">
         <div className="mx-auto max-w-4xl space-y-8">

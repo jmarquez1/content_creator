@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ArrowLeft, Plus, Star, Pencil } from 'lucide-react';
 import Link from 'next/link';
-import { Header } from '@/components/layout/header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -61,24 +60,24 @@ export default function VoiceProfilesPage() {
 
   return (
     <div className="flex h-full flex-col">
-      <Header
-        title="Voice Profiles"
-        subtitle="Manage your writing persona and tone settings"
-        actions={
-          <div className="flex items-center gap-2">
-            <Link href="/settings">
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back
-              </Button>
-            </Link>
-            <Button onClick={() => setIsCreateModalOpen(true)}>
-              <Plus className="mr-2 h-4 w-4" />
-              New Profile
+      <div className="flex h-20 items-center justify-between bg-white/50 backdrop-blur-sm border-b border-[var(--color-border)] px-6">
+        <div>
+          <h1 className="text-2xl font-bold text-[var(--color-foreground)]">Voice Profiles</h1>
+          <p className="text-sm text-[var(--color-muted-foreground)]">Manage your writing persona and tone settings</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Link href="/settings">
+            <Button variant="ghost" size="sm">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back
             </Button>
-          </div>
-        }
-      />
+          </Link>
+          <Button onClick={() => setIsCreateModalOpen(true)}>
+            <Plus className="mr-2 h-4 w-4" />
+            New Profile
+          </Button>
+        </div>
+      </div>
 
       <div className="flex-1 overflow-auto p-6">
         <div className="mx-auto max-w-4xl space-y-4">
