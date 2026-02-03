@@ -27,7 +27,7 @@ const settingsSections = [
 export default function SettingsPage() {
   return (
     <div className="flex h-full flex-col">
-      <Header title="Settings" subtitle="Configure your content creation preferences" />
+      <Header />
       <div className="flex-1 overflow-auto p-6">
         <div className="mx-auto max-w-4xl space-y-4">
           {settingsSections.map((section) => (
