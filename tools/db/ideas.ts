@@ -114,3 +114,6 @@ export async function deleteIdea(supabase: DbClient, ideaId: string): Promise<vo
 export async function archiveIdea(supabase: DbClient, ideaId: string): Promise<Idea> {
   return updateIdeaStatus(supabase, ideaId, 'archived');
 }
+
+// Alias for getIdeaById for convenience
+export const getIdea = getIdeaById;

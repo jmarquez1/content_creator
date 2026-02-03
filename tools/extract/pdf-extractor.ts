@@ -1,5 +1,4 @@
-import pdf from 'pdf-parse';
-
+// Note: pdf-parse is a CommonJS module, we use dynamic import
 export interface PdfExtractionResult {
   text: string;
   numPages: number;
@@ -12,7 +11,9 @@ export interface PdfExtractionResult {
 
 export async function extractPdfText(buffer: Buffer): Promise<PdfExtractionResult> {
   try {
-    const data = await pdf(buffer);
+    // Dynamic import for CommonJS module
+    const pdfParse = (await import('pdf-parse')).default;
+    const data = await pdfParse(buffer);
 
     return {
       text: data.text.trim(),
