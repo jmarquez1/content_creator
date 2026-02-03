@@ -76,13 +76,15 @@ export async function POST(request: Request) {
     const promptTemplate = await getActivePromptTemplate(supabase, user.id, taskType);
 
     // Build user input from idea
-    const outlineArray = Array.isArray(idea.outline) ? idea.outline : null;
+    const outlineArray = Array.isArray(idea.outline)
+      ? (idea.outline as Array<{ point: string }>)
+      : null;
     const userInput: UserInput = {
       topic: idea.title,
       audience: body.additional_context,
       angle: idea.hook || undefined,
       example: outlineArray
-        ? outlineArray.map((item: { point: string }) => item.point).join('\n')
+        ? outlineArray.map((item) => item.point).join('\n')
         : undefined,
       cta_preference: idea.suggested_cta || undefined,
     };
