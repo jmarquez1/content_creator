@@ -1,7 +1,7 @@
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
 export type IdeaStatus = 'inbox' | 'developing' | 'ready' | 'archived';
-export type PostStatus = 'draft' | 'review' | 'scheduled' | 'published' | 'archived';
+export type PostStatus = 'draft' | 'review' | 'approved' | 'published' | 'archived';
 export type Platform = 'linkedin' | 'instagram' | 'facebook';
 export type SourceType = 'youtube' | 'topic' | 'document' | 'plain';
 export type TaskType = 'ideation' | 'trend_ideation' | 'drafting' | 'draft_linkedin' | 'draft_instagram' | 'draft_facebook' | 'rewriting' | 'repurposing';
