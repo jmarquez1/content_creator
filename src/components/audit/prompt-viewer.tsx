@@ -71,7 +71,7 @@ export function PromptViewer({ promptSnapshot, responseSnapshot, templateVersion
   return (
     <div className="space-y-3">
       {/* Template Versions */}
-      {templateVersions ? (
+      {templateVersions !== null && Object.keys(templateVersions).length > 0 && (
         <div className="flex flex-wrap gap-2 text-xs">
           {Object.entries(templateVersions).map(([key, value]) => (
             <span key={key} className="bg-muted px-2 py-1 rounded">
@@ -79,45 +79,45 @@ export function PromptViewer({ promptSnapshot, responseSnapshot, templateVersion
             </span>
           ))}
         </div>
-      ) : null}
+      )}
 
       {/* Composed Prompt */}
-      {promptSnapshot.composed_prompt &&
+      {'composed_prompt' in promptSnapshot && promptSnapshot.composed_prompt != null &&
         renderSection('Composed Prompt', 'composed_prompt', promptSnapshot.composed_prompt)
       }
 
       {/* Voice Profile */}
-      {promptSnapshot.voice_profile &&
+      {'voice_profile' in promptSnapshot && promptSnapshot.voice_profile != null &&
         renderSection('Voice Profile', 'voice_profile', promptSnapshot.voice_profile)
       }
 
       {/* Platform Profile */}
-      {promptSnapshot.platform_profile &&
+      {'platform_profile' in promptSnapshot && promptSnapshot.platform_profile != null &&
         renderSection('Platform Profile', 'platform_profile', promptSnapshot.platform_profile)
       }
 
       {/* Task Template */}
-      {promptSnapshot.task_template &&
+      {'task_template' in promptSnapshot && promptSnapshot.task_template != null &&
         renderSection('Task Template', 'task_template', promptSnapshot.task_template)
       }
 
       {/* User Input */}
-      {promptSnapshot.user_input &&
+      {'user_input' in promptSnapshot && promptSnapshot.user_input != null &&
         renderSection('User Input', 'user_input', promptSnapshot.user_input)
       }
 
       {/* Trend Summary */}
-      {promptSnapshot.trend_summary &&
+      {'trend_summary' in promptSnapshot && promptSnapshot.trend_summary != null &&
         renderSection('Trend Summary', 'trend_summary', promptSnapshot.trend_summary)
       }
 
       {/* Idea Context */}
-      {promptSnapshot.idea &&
+      {'idea' in promptSnapshot && promptSnapshot.idea != null &&
         renderSection('Idea Context', 'idea', promptSnapshot.idea)
       }
 
       {/* Response */}
-      {responseSnapshot &&
+      {responseSnapshot !== null &&
         renderSection('Generated Response', 'response', responseSnapshot)
       }
     </div>

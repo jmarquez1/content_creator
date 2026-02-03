@@ -11,8 +11,10 @@ export interface PdfExtractionResult {
 
 export async function extractPdfText(buffer: Buffer): Promise<PdfExtractionResult> {
   try {
-    // Dynamic import for CommonJS module
-    const pdfParse = (await import('pdf-parse')).default;
+    // Dynamic import for CommonJS module - cast to any to handle module interop issues
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const pdfParseModule = await import('pdf-parse') as any;
+    const pdfParse = pdfParseModule.default ?? pdfParseModule;
     const data = await pdfParse(buffer);
 
     return {
