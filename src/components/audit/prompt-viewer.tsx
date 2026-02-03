@@ -71,7 +71,7 @@ export function PromptViewer({ promptSnapshot, responseSnapshot, templateVersion
   return (
     <div className="space-y-3">
       {/* Template Versions */}
-      {templateVersions && (
+      {templateVersions ? (
         <div className="flex flex-wrap gap-2 text-xs">
           {Object.entries(templateVersions).map(([key, value]) => (
             <span key={key} className="bg-muted px-2 py-1 rounded">
@@ -79,7 +79,7 @@ export function PromptViewer({ promptSnapshot, responseSnapshot, templateVersion
             </span>
           ))}
         </div>
-      )}
+      ) : null}
 
       {/* Composed Prompt */}
       {promptSnapshot.composed_prompt &&
