@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+@theme {
+  /* Modern gradient-friendly color palette */
+  --color-background: hsl(220 20% 97%);
+  --color-foreground: hsl(220 30% 10%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(220 30% 10%);
+
+  /* Vibrant primary - Electric Indigo */
+  --color-primary: hsl(250 95% 60%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  /* Secondary - Soft Slate */
+  --color-secondary: hsl(220 15% 92%);
+  --color-secondary-foreground: hsl(220 30% 20%);
+
+  /* Muted - Gentle Gray */
+  --color-muted: hsl(220 15% 94%);
+  --color-muted-foreground: hsl(220 10% 45%);
+
+  /* Accent - Vibrant Teal */
+  --color-accent: hsl(172 80% 45%);
+  --color-accent-foreground: hsl(0 0% 100%);
+
+  /* Destructive - Warm Red */
+  --color-destructive: hsl(0 75% 55%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  /* Success - Fresh Green */
+  --color-success: hsl(150 70% 45%);
+  --color-success-foreground: hsl(0 0% 100%);
+
+  /* Warning - Warm Amber */
+  --color-warning: hsl(38 95% 55%);
+  --color-warning-foreground: hsl(0 0% 10%);
+
+  --color-border: hsl(220 15% 88%);
+  --color-input: hsl(220 15% 92%);
+  --color-ring: hsl(250 95% 60%);
+
+  /* Gradient colors */
+  --gradient-start: hsl(250 95% 60%);
+  --gradient-mid: hsl(280 90% 55%);
+  --gradient-end: hsl(320 85% 55%);
+
+  --radius: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+  --shadow-glow: 0 0 40px -10px var(--color-primary);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px -5px var(--color-primary); }
+  50% { box-shadow: 0 0 30px -5px var(--color-primary); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.4s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+}
+
+.bg-gradient-subtle {
+  background: linear-gradient(135deg, hsl(250 95% 98%), hsl(280 90% 98%), hsl(320 85% 98%));
+}
+
+.bg-gradient-mesh {
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(at 40% 20%, hsla(250, 95%, 60%, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(280, 90%, 55%, 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(172, 80%, 45%, 0.06) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(320, 85%, 55%, 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(250, 95%, 60%, 0.08) 0px, transparent 50%);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Focus styles */
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Interactive states */
+.interactive {
+  transition: all 0.2s ease;
+}
+
+.interactive:hover {
+  transform: translateY(-1px);
+}
+
+.interactive:active {
+  transform: translateY(0);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Status colors for Kanban */
+.status-inbox {
+  --status-color: hsl(220 15% 50%);
+  --status-bg: hsl(220 15% 95%);
+}
+
+.status-developing {
+  --status-color: hsl(38 95% 45%);
+  --status-bg: hsl(38 95% 95%);
+}
+
+.status-ready {
+  --status-color: hsl(150 70% 40%);
+  --status-bg: hsl(150 70% 95%);
+}
+
+.status-archived {
+  --status-color: hsl(220 10% 60%);
+  --status-bg: hsl(220 10% 95%);
+}
+
+.status-draft {
+  --status-color: hsl(220 15% 50%);
+  --status-bg: hsl(220 15% 95%);
+}
+
+.status-review {
+  --status-color: hsl(38 95% 45%);
+  --status-bg: hsl(38 95% 95%);
+}
+
+.status-approved {
+  --status-color: hsl(172 80% 40%);
+  --status-bg: hsl(172 80% 95%);
+}
+
+.status-published {
+  --status-color: hsl(250 95% 55%);
+  --status-bg: hsl(250 95% 95%);
+}
+
+/* Platform colors */
+.platform-linkedin {
+  --platform-color: hsl(201 100% 35%);
+  --platform-bg: hsl(201 100% 95%);
+}
+
+.platform-instagram {
+  --platform-color: hsl(340 75% 55%);
+  --platform-bg: hsl(340 75% 95%);
+}
+
+.platform-facebook {
+  --platform-color: hsl(220 45% 45%);
+  --platform-bg: hsl(220 45% 95%);
+}
