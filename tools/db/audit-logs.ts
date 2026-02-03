@@ -17,6 +17,7 @@ export interface CreateAuditLogInput {
     user_input: object;
     trend_summary?: string | null;
     composed_prompt: string;
+    idea?: { id: string; title: string; hook: string | null; outline: unknown };
   };
   modelUsed: string;
   inputTokens?: number;
