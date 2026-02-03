@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { Search, TrendingUp, ExternalLink, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { Header } from '@/components/layout/header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -87,14 +86,7 @@ export default function TrendsPage() {
   };
 
   return (
-    <div className="flex h-full flex-col">
-      <Header
-        title="Trend Research"
-        subtitle="Discover trending topics to inform your content"
-      />
-
-      <div className="flex-1 overflow-auto p-6">
-        <div className="mx-auto max-w-4xl space-y-6">
+    <div className="mx-auto max-w-4xl space-y-6">
           {/* Search Form */}
           <Card>
             <CardHeader>
@@ -210,8 +202,6 @@ export default function TrendsPage() {
               </CardContent>
             </Card>
           )}
-        </div>
-      </div>
     </div>
   );
 }
