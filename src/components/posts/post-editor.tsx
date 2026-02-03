@@ -5,7 +5,7 @@ import { Save, Wand2, Copy, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select';
+import { Select } from '@/components/ui/select';
 import { PlatformPreview } from './platform-preview';
 import type { PostWithIdea, PostContent, Platform } from '@/types/posts';
 import type { PostVariant } from '@/tools/db/posts';
@@ -90,18 +90,12 @@ export function PostEditor({
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Select value={selectedVariationType} onValueChange={setSelectedVariationType}>
-              <SelectTrigger className="w-40">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {VARIATION_TYPES.map((type) => (
-                  <SelectItem key={type.value} value={type.value}>
-                    {type.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <Select
+              value={selectedVariationType}
+              onChange={(e) => setSelectedVariationType(e.target.value)}
+              options={VARIATION_TYPES}
+              className="w-40"
+            />
             <Button
               variant="outline"
               onClick={() => onGenerateVariant(selectedVariationType)}
@@ -126,21 +120,21 @@ export function PostEditor({
               {variants.map((variant) => (
                 <div
                   key={variant.id}
-                  className="rounded-lg border p-3 hover:bg-muted/50 cursor-pointer"
+                  className="rounded-xl border border-[var(--color-border)] p-3 hover:bg-[var(--color-secondary)]/50 cursor-pointer transition-colors"
                   onClick={() => handleTextChange(variant.content.text)}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-medium capitalize">
+                    <span className="text-xs font-medium capitalize text-[var(--color-foreground)]">
                       {variant.variation_type} variant
                     </span>
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-xs text-[var(--color-muted-foreground)]">
                       {new Date(variant.created_at).toLocaleDateString()}
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
+                  <p className="text-sm text-[var(--color-muted-foreground)] line-clamp-2">
                     {variant.content.text}
                   </p>
-                  <p className="mt-1 text-xs text-muted-foreground italic">
+                  <p className="mt-1 text-xs text-[var(--color-muted-foreground)] italic">
                     {variant.variation_description}
                   </p>
                 </div>
