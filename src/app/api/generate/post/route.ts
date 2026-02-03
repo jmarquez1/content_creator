@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     }
 
     // Fetch the idea
-    const idea = await getIdea(supabase, user.id, body.idea_id);
+    const idea = await getIdea(supabase, body.idea_id);
     if (!idea) {
       return NextResponse.json(
         createErrorResponse({ code: 'NOT_FOUND', message: 'Idea not found' }),
