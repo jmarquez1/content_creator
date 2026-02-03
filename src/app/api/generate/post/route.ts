@@ -145,7 +145,7 @@ export async function POST(request: Request) {
                 length_constraints: platformProfile.length_constraints,
               },
             }
-          : null,
+          : undefined,
         user_input: userInput,
         idea: {
           id: idea.id,
